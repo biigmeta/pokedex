@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Press+Start+2P&display=swap');
+
 :root {
   --color-dark:#303030;
   --color-black:#202020;
@@ -20,6 +22,7 @@
 }
 
 body {
+  font-family: 'Press Start 2P','Darumadrop One', cursive;
   color: var(--color-dark);
   background: var(--color-black);
 }
