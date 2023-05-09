@@ -6,7 +6,7 @@ import TypeBadge from "./TypeBadge"
 export default function Display({ pokemons }) {
 
   return (
-    <div className="grid grid-cols-6 gap-4 p-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2 p-4">
       {pokemons ? pokemons.map((item, index) => { return <PokemonCard key={index} data={item} /> }) : <></>}
     </div>
   )
@@ -44,7 +44,7 @@ function PokemonCard({ data }) {
         <Image src={pokemonData?.sprites?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}
           className="w-full object-contain grayscale group-hover:grayscale-0 duration-300" />
         <p className="text-center capitalize">No.{pokemonData?.id} {pokemonData?.name}</p>
-        <div className="w-full flex justify-center gap-2 p-2">
+        <div className="w-full flex justify-around gap-2 p-2">
           {pokemonData?.types?.map((item,index) => {
             return <TypeBadge key={index} type={item?.type}/>
           })}

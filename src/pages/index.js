@@ -59,11 +59,11 @@ export default function Home() {
         <div className="w-100 bg-[var(--color-black)]">
           <div className="min-h-screen mx-auto sm:w-full md:w-[85%] lg:w-[75%] bg-[var(--color-white)]">
             <div className="p-4">
-              <Image src={POKEMON_LOGO_IMAGE.src} width={720} height={240} alt="Pokemon Logo" className="w-[50%] md:w-[15%]" />
+              <Image src={POKEMON_LOGO_IMAGE.src} width={720} height={240} alt="Pokemon Logo" className="w-[50%] md:w-[25%] lg:w-[15%] mx-auto" />
             </div>
             <Search setSelectedType={setSelectedTypes} />
             <Display pokemons={pokemons} />
-            <div className="flex justify-center p-2">
+            <div className="flex justify-center p-4">
               {nextAPI &&
                 <button onClick={loadMore} className={`flex justify-center items-center gap-2 rounded p-2 min-w-[120px] text-white bg-[var(--color-dark)] hover:bg-[var(--color-primary)] duration-500`}>
                   {loading && <div className="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">

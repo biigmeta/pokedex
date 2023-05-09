@@ -78,8 +78,8 @@ export default function Search({ setSelectedType }) {
     }, [])
 
     return (
-        <div className="p-2 bg-[var(--color-bg)]">
-            <div className="flex w-full items-center gap-2 text-sm mb-2">
+        <div className="p-4 bg-[var(--color-bg)] hidden">
+            <div className="flex w-full items-center gap-2 text-sm">
                 <label htmlFor="name">Search</label>
                 <input type="text" id="name" className="p-2 rounded outline-none" />
             </div>

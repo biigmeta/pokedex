@@ -8,15 +8,12 @@ export default function TypeBadge({ type }) {
             let currentType = pokemonTypes.find(item => item.name.toLowerCase() === type.name.toLowerCase());
             if (currentType) {
                 setBgColor(currentType.color);
-                console.log("set current type", currentType.color)
-            } else {
-                console.log("no current type")
-            }
+            } 
         }
     }, [type]);
     return (
-        <div className={`rounded-full shadow px-4 py-1 text-white`} style={{ backgroundColor: bgColor }}>
-            <p>{type?.name}</p>
+        <div className={`rounded-full shadow px-4 text-white`} style={{ backgroundColor: bgColor }}>
+            <label>{type?.name}</label>
         </div>
     )
 }
