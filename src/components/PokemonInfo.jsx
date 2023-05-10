@@ -10,11 +10,27 @@ export default function PokemonInfo({ show = false, close, title = "pokemon", da
     };
 
     const stats = () => {
+
+        let heightStat = 0;
+
+        data?.stats?.forEach((item) => {
+            if (item?.base_stat >= heightStat) {
+                heightStat = item?.base_stat;
+            }
+        })
+
+        if (heightStat <= 100) heightStat = 100;
+
         return data?.stats?.map((item, index) => {
+
+            let percentage = (item?.base_stat / heightStat) * 100;
             return <div key={index}>
-                <p className='capitalize'>{item?.stat?.name}</p>
+                <div className='w-full flex justify-between'>
+                    <p className='capitalize'>{item?.stat?.name}</p>
+                    <p className='capitalize'>{percentage.toFixed(0)}</p>
+                </div>
                 <div className="w-full bg-gray-200 rounded-full h-[12px] mb-4 dark:bg-gray-700">
-                    <div className="bg-[var(--color-primary)] h-[12px] rounded-full dark:bg-blue-500" style={{ width: `${item?.base_stat}%` }} />
+                    <div className="bg-[var(--color-primary)] h-[12px] rounded-full dark:bg-blue-500" style={{ width: `${percentage}%` }} />
                 </div>
             </div>
         })
