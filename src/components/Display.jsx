@@ -38,7 +38,7 @@ function PokemonCard({ data }) {
       });
     }
   }, [data])
-  return <div className="group min-h-[320px] bg-white shadow p-2 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300">
+  return <div className="group min-h-[320px] bg-[var(--color-black)] text-white shadow p-2 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300">
     {pokemonData ?
       <>
         <Image src={pokemonData?.sprites?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}

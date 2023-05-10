@@ -2,6 +2,7 @@ import { POKEMON_LOGO_IMAGE } from "@/assets";
 import AppWrapper from "@/components/AppWrapper";
 import Display from "@/components/Display";
 import Search from "@/components/Search";
+import ToTop from "@/components/ToTop";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -57,7 +58,7 @@ export default function Home() {
     <>
       <AppWrapper>
         <div className="w-100 bg-[var(--color-black)]">
-          <div className="min-h-screen mx-auto sm:w-full md:w-[85%] lg:w-[75%] bg-[var(--color-white)]">
+          <div className="min-h-screen mx-auto sm:w-full md:w-[85%] lg:w-[70%] bg-[var(--color-dark)]">
             <div className="p-4">
               <Image src={POKEMON_LOGO_IMAGE.src} width={720} height={240} alt="Pokemon Logo" className="w-[50%] md:w-[25%] lg:w-[15%] mx-auto" />
             </div>
@@ -73,6 +74,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <ToTop/>
       </AppWrapper>
 
     </>
