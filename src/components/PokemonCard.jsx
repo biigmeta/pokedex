@@ -12,7 +12,7 @@ export default function PokemonCard({ data, openInfo }) {
     }
 
     const handleOpenPokemonInfo = () => {
-        openInfo(data);
+        openInfo(pokemonData);
     }
 
     const AnimatedLoading = () => {

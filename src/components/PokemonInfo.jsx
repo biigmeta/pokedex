@@ -1,16 +1,24 @@
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
-export default function PokemonInfo({ show = false, close }) {
+export default function PokemonInfo({ show = false, close, title = "pokemon", data }) {
 
     const [display, setDisplay] = useState("hidden");
-
-    const handleClickBackdrop = () => {
-        close()
-    }
 
     const handlePreventPropagation = (e) => {
         e.stopPropagation();
     };
+
+    const stats = () => {
+        return data?.stats?.map((item, index) => {
+            return <div key={index}>
+                <p className='capitalize'>{item?.stat?.name}</p>
+                <div className="w-full bg-gray-200 rounded-full h-[12px] mb-4 dark:bg-gray-700">
+                    <div className="bg-[var(--color-primary)] h-[12px] rounded-full dark:bg-blue-500" style={{ width: `${item?.base_stat}%` }} />
+                </div>
+            </div>
+        })
+    }
 
     useEffect(() => {
         if (show) {
@@ -22,30 +30,24 @@ export default function PokemonInfo({ show = false, close }) {
 
     return (
         <div
-            className={`${display} fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-50`}
+            className={`${display} fixed z-10 inset-0 bg-black bg-opacity-50 items-center justify-center`}
             onClick={close}
         >
-            <div className="flex items-center justify-center m-auto" onClick={handlePreventPropagation}>
-                <div className="relative bg-[var(--color-dark)] border border-[var(--color-primary)]">
+            <div className="flex items-center justify-center w-[96%] md:w-[84%] lg:w-[64%] xl:w-[50%]"
+                onClick={handlePreventPropagation}>
+                <div className="relative flex flex-col bg-[var(--color-dark)] shadow-lg w-full min-h-[640px]">
                     <div className="text-center py-4 px-6 bg-gray-100 rounded-t-lg">
-                        <h2 className="text-xl font-bold">{"title"}</h2>
+                        <h2 className="text-xl font-bold">{data?.name}</h2>
                     </div>
-                    <div className="p-6">
-                        <p className="text-gray-700">{"message"}</p>
-                    </div>
-                    <div className="flex justify-end px-6 py-4 bg-gray-100 rounded-b-lg">
-                        <button
-                            onClick={null}
-                            className="text-gray-500 bg-transparent border border-gray-500 font-semibold px-4 py-2 mr-2 rounded hover:text-white hover:bg-gray-500 hover:border-transparent focus:outline-none focus:shadow-outline"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={null}
-                            className="text-white bg-blue-500 border-0 font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline"
-                        >
-                            Confirm
-                        </button>
+                    <div className="p-4 grow max-h-[540px] overflow-y-auto overflow-x-hidden text-white">
+                        <div className='flex flex-col md:flex-row'>
+                            <div className='img-container flex justify-center items-center w-full md:w-[40%] xl:w-[25%] p-4 border rounded-lg'>
+                                <Image src={data?.sprites?.front_default} width={480} height={480} alt='Pokemon Image' className='w-full' />
+                            </div>
+                            <div className='info-container w-full md:w-[60%] xl:w-[75%] p-4'>
+                                {stats()}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
