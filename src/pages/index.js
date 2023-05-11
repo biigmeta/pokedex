@@ -80,7 +80,7 @@ export default function Home() {
             <Display pokemons={pokemons} openInfo={handleOpenPokemonInfo} />
             <div className="flex justify-center p-4">
               {nextAPI &&
-                <button onClick={loadMore} className={`flex justify-center items-center gap-2 shadow-lg rounded-full p-2 min-w-[120px] text-white bg-[var(--color-dark)] hover:bg-[var(--color-primary)] duration-500`}>
+                <button onClick={loadMore} className={`flex justify-center items-center border gap-2 shadow-lg rounded-full p-2 min-w-[120px] text-white bg-[var(--color-dark)] hover:bg-[var(--color-primary)] duration-500`}>
                   {loading && <div className="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
                     <span className="sr-only">Loading...</span>
                   </div>} Load more...
@@ -88,7 +88,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <PokemonInfo show={displayInfo} open={handleOpenPokemonInfo} close={handleClosePokemonInfo} data={currentPokemonData} />
+        <PokemonInfo show={displayInfo} open={handleOpenPokemonInfo} close={handleClosePokemonInfo} pokemonData={currentPokemonData} />
         <ToTop />
       </AppWrapper>
 

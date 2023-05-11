@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import TypeBadge from './TypeBadge';
 import axios from "axios"
 
-export default function PokemonCard({ data, openInfo }) {
+export default function PokemonCard({ data, openInfo = null }) {
     const [pokemonData, setPokemonData] = useState(null)
 
     const getPokemonDetail = async () => {
@@ -12,7 +12,7 @@ export default function PokemonCard({ data, openInfo }) {
     }
 
     const handleOpenPokemonInfo = () => {
-        openInfo(pokemonData);
+        if (openInfo) openInfo(pokemonData);
     }
 
     const AnimatedLoading = () => {
@@ -26,20 +26,22 @@ export default function PokemonCard({ data, openInfo }) {
     }
 
     useEffect(() => {
-        if (data) {
+        if (data?.url) {
             getPokemonDetail().then(p => {
                 setPokemonData(p);
             });
+        } else {
+            setPokemonData(data);
         }
     }, [data])
 
     return <div
-        className="group min-h-[320px] bg-[var(--color-black)] text-white shadow p-2 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300"
+        className="group bg-[var(--color-black)] text-white shadow p-4 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300"
         onClick={handleOpenPokemonInfo}>
         {pokemonData ?
             <>
-                <Image src={pokemonData?.sprites?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}
-                    className="w-full object-contain grayscale group-hover:grayscale-0 duration-300" />
+                <Image src={pokemonData?.sprites?.other?.dream_world?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}
+                    className="w-full h-[180px] object-contain grayscale group-hover:grayscale-0 duration-300" />
                 <p className="text-center capitalize">No.{pokemonData?.id} {pokemonData?.name}</p>
                 <div className="w-full flex justify-around gap-2 p-2">
                     {pokemonData?.types?.map((item, index) => {
