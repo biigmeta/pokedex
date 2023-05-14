@@ -12,6 +12,7 @@ export default function Home() {
 
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [pokemons, setPokemons] = useState([]);
+  const [displayPokemons, setDisplayPokemon] = useState([]);
 
   const [nextAPI, setNextAPI] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -44,24 +45,21 @@ export default function Home() {
   }
 
   const handleOpenPokemonInfo = (data) => {
-    console.log(data);
     setCurrentPokemonData(data);
     setDisplayInfo(true);
   }
 
   const handleClosePokemonInfo = () => {
-    console.log("close");
     setDisplayInfo(false);
   }
 
   useEffect(() => {
-    console.log(pokemons);
+    setDisplayPokemon(pokemons);
   }, [pokemons])
 
   useEffect(() => {
     setLoading(true);
     getInitialPokemon().then(data => {
-
       setPokemons(data.results);
       setNextAPI(data.next);
       setLoading(false);
@@ -77,7 +75,7 @@ export default function Home() {
               <Image src={POKEMON_LOGO_IMAGE.src} width={720} height={240} alt="Pokemon Logo" className="w-[50%] md:w-[25%] lg:w-[20%] mx-auto" />
             </div>
             <Search setSelectedType={setSelectedTypes} />
-            <Display pokemons={pokemons} openInfo={handleOpenPokemonInfo} />
+            <Display pokemons={displayPokemons} openInfo={handleOpenPokemonInfo} />
             <div className="flex justify-center p-4">
               {nextAPI &&
                 <button onClick={loadMore} className={`flex justify-center items-center border gap-2 shadow-lg rounded-full p-2 min-w-[120px] text-white bg-[var(--color-dark)] hover:bg-[var(--color-primary)] duration-500`}>

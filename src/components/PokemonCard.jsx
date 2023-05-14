@@ -5,7 +5,7 @@ import axios from "axios"
 
 export default function PokemonCard({ data, openInfo = null }) {
     const [pokemonData, setPokemonData] = useState(null)
-    const [gray,setGray] = useState("grayscale-0");
+    const [gray, setGray] = useState("grayscale-0");
 
     const getPokemonDetail = async () => {
         const res = await axios.get(data.url);
@@ -39,7 +39,7 @@ export default function PokemonCard({ data, openInfo = null }) {
     }, [data])
 
     return <div
-        className="group bg-[var(--color-black)] text-white shadow p-4 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300"
+        className="group bg-[var(--color-black)] text-white p-4 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300"
         onClick={handleOpenPokemonInfo}>
         {pokemonData ?
             <>
