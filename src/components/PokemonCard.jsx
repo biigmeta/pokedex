@@ -5,6 +5,7 @@ import axios from "axios"
 
 export default function PokemonCard({ data, openInfo = null }) {
     const [pokemonData, setPokemonData] = useState(null)
+    const [gray,setGray] = useState("grayscale-0");
 
     const getPokemonDetail = async () => {
         const res = await axios.get(data.url);
@@ -27,10 +28,12 @@ export default function PokemonCard({ data, openInfo = null }) {
 
     useEffect(() => {
         if (data?.url) {
+            setGray("grayscale");
             getPokemonDetail().then(p => {
                 setPokemonData(p);
             });
         } else {
+            setGray("grayscale-0");
             setPokemonData(data);
         }
     }, [data])
@@ -41,7 +44,7 @@ export default function PokemonCard({ data, openInfo = null }) {
         {pokemonData ?
             <>
                 <Image src={pokemonData?.sprites?.other?.dream_world?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}
-                    className="w-full h-[180px] object-contain grayscale group-hover:grayscale-0 duration-300" />
+                    className={`w-full h-[180px] object-contain ${gray} group-hover:grayscale-0 duration-300`} />
                 <p className="text-center capitalize">No.{pokemonData?.id} {pokemonData?.name}</p>
                 <div className="w-full flex justify-around gap-2 p-2">
                     {pokemonData?.types?.map((item, index) => {

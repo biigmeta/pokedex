@@ -54,7 +54,7 @@ export default function PokemonInfo({ show = false, close, title = "pokemon", po
                 onClick={handlePreventPropagation}>
                 <div className="relative flex flex-col  bg-transparent shadow-lg w-full max-h-[96vh]">
                     <div className="flex justify-end py-2 px-2 lg:py-4 lg:px-0 bg-transparent rounded-t-lg">
-                        <button onClick={close} className='bg-white bg-transparent text-white border-2 border-[var(--color-primary)]  hover:text-[var(--color-primary)] hover:bg-white hover:border-white rounded-lg shadow-lg px-3 py-1 duration-300'>X</button>
+                        <button onClick={close} className='bg-white bg-transparent text-[var(--color-dark)] border-2 border-[var(--color-primary)]  hover:text-[var(--color-primary)] hover:bg-white hover:border-white rounded-lg shadow-lg px-3 py-1 duration-300'>X</button>
                     </div>
                     <div className="bg-[var(--color-dark)] p-4 grow max-h-[540px] overflow-y-auto overflow-x-hidden text-white">
                         <div className='flex flex-col md:flex-row'>

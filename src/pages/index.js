@@ -72,7 +72,7 @@ export default function Home() {
     <>
       <AppWrapper>
         <div className="w-100 bg-[var(--color-black)]">
-          <div className="min-h-screen mx-auto sm:w-full md:w-[85%] lg:w-[70%] bg-[var(--color-dark)]">
+          <div className="relative min-h-screen mx-auto sm:w-full md:w-[85%] lg:w-[70%] bg-[var(--color-dark)]">
             <div className="p-4">
               <Image src={POKEMON_LOGO_IMAGE.src} width={720} height={240} alt="Pokemon Logo" className="w-[50%] md:w-[25%] lg:w-[20%] mx-auto" />
             </div>

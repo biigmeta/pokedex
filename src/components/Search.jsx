@@ -78,10 +78,10 @@ export default function Search({ setSelectedType }) {
     }, [])
 
     return (
-        <div className="p-4 bg-[var(--color-bg)] hidden">
+        <div className="sticky top-0 left-0 p-4 bg-[var(--color-dark)] z-10">
             <div className="flex w-full items-center gap-2 text-sm">
-                <label htmlFor="name">Search</label>
-                <input type="text" id="name" className="p-2 rounded outline-none" />
+                <input type="text" id="pokemon-name" placeholder="Pokemon's name" className="p-2 w-full rounded outline-none" />
+                <button className="text-white border h-full p-2 rounded hover:bg-[var(--color-primary)] duration-300"> Search</button>
             </div>
             <ul className="items-center w-full grid grid-cols-7 hidden text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 <li className="w-full border border-gray-200 dark:border-gray-600">
