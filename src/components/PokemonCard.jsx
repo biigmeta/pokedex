@@ -2,6 +2,8 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import TypeBadge from './TypeBadge';
 import axios from "axios"
+import { excludeDefaultMomentLocales } from '../../next.config';
+import { POKEBALL_ICON_IMAGE } from '@/assets';
 
 export default function PokemonCard({ data, openInfo = null }) {
     const [pokemonData, setPokemonData] = useState(null)
@@ -36,15 +38,17 @@ export default function PokemonCard({ data, openInfo = null }) {
             setGray("grayscale-0");
             setPokemonData(data);
         }
+
     }, [data])
 
     return <div
-        className="group bg-[var(--color-black)] text-white p-4 rounded cursor-pointer hover:scale-[1.015]  border-2 hover:border-[var(--color-primary)] duration-300"
+        className="group bg-[var(--color-black)] text-white p-4 rounded cursor-pointer hover:scale-[1.015]  border hover:border-[var(--color-primary)] duration-300"
         onClick={handleOpenPokemonInfo}>
         {pokemonData ?
             <>
-                <Image src={pokemonData?.sprites?.other?.dream_world?.front_default} width={240} height={240} alt={`${pokemonData?.name} image`}
-                    className={`w-full h-[180px] object-contain ${gray} group-hover:grayscale-0 duration-300`} />
+                <Image src={pokemonData?.sprites?.other?.['official-artwork']?.front_default || pokemonData?.sprites?.other?.['official-artwork']?.front_default || POKEBALL_ICON_IMAGE.src} width={240} height={240} alt={`${pokemonData?.name} image`}
+                    className={`w-full h-[180px] object-contain ${gray} group-hover:grayscale-0 duration-300`}
+                />
                 <p className="text-center capitalize">No.{pokemonData?.id} {pokemonData?.name}</p>
                 <div className="w-full flex justify-around gap-2 p-2">
                     {pokemonData?.types?.map((item, index) => {
